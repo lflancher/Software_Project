@@ -1,0 +1,25 @@
+{% extends 'recipe_app/base_template.html' %}
+
+{% block content %}
+
+
+
+<h4>User {{ user.username }}'s recipes</h4>
+
+<!---Delete button, don't forget-->
+
+
+{% if user.recipe_list %}
+<ul>
+    {% for recipe in recipe_list %}
+    <li>
+        <a href = "{{ recipe.get_absolute_url }}" title = "View {{ recipe.name }}">{{ recipe.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% else %}
+<p>Looks like {{ user.username }} doesn't have any recipes right now.</p>
+
+{% endif %}
+{% endblock %}

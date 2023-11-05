@@ -1,0 +1,29 @@
+{% extends 'recipe_app/base_template.html' %}
+
+
+{% block content %}
+
+<h2>Recipe for {{ recipe.name }}</h2>
+<h3>User provided description: {{ recipe.short_desc }}</h3>
+
+<h4>This recipes calls for: </h4>
+<p>{{ recipe.ingredients }}<br /></p>
+
+<h4>In order to create this</h4>
+
+<p>{{ recipe.instruction }}</p>
+
+<p>
+
+    This recipe was submitted by 
+    <a href = "{{ recipe.user.get_absolute_url }}" title = "View {{recipe.user}}'s profile">{{ recipe.user }}</a>
+
+</p>
+
+
+
+{% endblock %}
+
+
+
+

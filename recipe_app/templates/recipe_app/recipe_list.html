@@ -1,0 +1,58 @@
+{% extends 'recipe_app/base_template.html' %}
+
+
+
+
+{% block content %}
+
+
+
+
+<h2 class = "display-5">Our recipes:</h2>
+
+
+<h4>Or, have a specific dish you're looking for? Try searching for it!</h4>
+
+
+<input type = "text" id = "form1" onkeyup="lookfor()" placeholder = "Got something in mind?", aria-label = "Got something in mind?" >
+
+
+
+{% if recipe_list %}
+<ul id = "myUL">
+    
+    {% for recipe in recipe_list %}
+    <li>
+        <a href = "{{ recipe.get_absolute_url }}" title = "{{recipe.name}}'s recipe">{{ recipe.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% else %}
+<p>Looks like there aren't any recipes right now. Check back later.</p>
+{% endif %}
+
+
+
+<script>
+
+function lookfor(){
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById('form1');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName('li');
+
+    for (i = 0; i < li.length; i++){
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1){
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+{% endblock %}

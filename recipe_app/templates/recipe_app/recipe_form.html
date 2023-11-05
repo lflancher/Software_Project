@@ -1,0 +1,16 @@
+{% extends 'recipe_app/base_template.html' %}
+
+
+{% block content %}
+
+<form action="" method = "POST">
+
+
+{% crsf_token %}
+<table>
+{{ form.as_table }}
+</table>
+<input type = "submit" name = "Submit">
+</form>
+
+{% endblock %}

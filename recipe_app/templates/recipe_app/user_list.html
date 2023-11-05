@@ -1,0 +1,52 @@
+{% extends 'recipe_app/base_template.html' %}
+
+{% block content %}
+
+<h2 class = "display-5">Our Current Users:</h2>
+
+
+
+<h4>Or, looking for someone specific?</h4>
+
+
+<input type = "text" id = "form1" onkeyup="lookfor()" placeholder = "Got someone in mind?", aria-label = "Got someone in mind?" >
+
+
+{% if user_list %}
+<ul id = "myUL">
+    
+    {% for user in user_list %}
+    <li>
+        <a href = "{{ user.get_absolute_url }}"  title = "View {{user.username}}'s profile">{{ user.username }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% else %}
+<p>Looks like there aren't any users right now. Check back later.</p>
+{% endif %}
+
+<script>
+
+    function lookfor(){
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById('form1');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName('li');
+    
+        for (i = 0; i < li.length; i++){
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1){
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+    </script>
+
+
+
+{% endblock %}
