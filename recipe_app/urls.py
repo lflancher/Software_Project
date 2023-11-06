@@ -13,6 +13,9 @@ path('users/', views.UserListView.as_view(), name = 'users'),
 path('user/<int:pk>', views.UserDetailView.as_view(), name = 'user-detail'),
 path('recipes/', views.RecipeListView.as_view(), name = 'recipes'),
 path('recipes/<int:pk>', views.RecipeDetailView.as_view(), name = 'recipe-detail'),
-path('user/<int:user_id>/create_recipe/', views.createRecipe, name='create_recipe'),
-
+path('create_recipe/', views.createRecipe, name='create_recipe'),
+path('create_user/', views.createUser, name='create_user'),
+path('update_recipe/<str:pk>/', views.updateRecipe, name = 'update_recipe'),
+path('delete_recipe/<str:pk>/', views.deleteRecipe, name = 'delete_recipe'),
+path('delete_user/<str:pk>/', views.deleteUser, name = 'delete_user'),
 ]

@@ -18,6 +18,15 @@
     {% for user in user_list %}
     <li>
         <a href = "{{ user.get_absolute_url }}"  title = "View {{user.username}}'s profile">{{ user.username }}</a>
+        <span class="pull-right">
+                <form action="{% url 'delete_user' user.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="user_id" value="{{ user.id }}"/>
+                        <button type="submit" class="btn btn-danger btn-small">Delete
+                </button>
+        </form>
+     </span>
+    </br>
     </li>
     {% endfor %}
 </ul>

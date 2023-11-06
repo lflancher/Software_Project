@@ -1,16 +1,22 @@
 {% extends 'recipe_app/base_template.html' %}
-
+{% load static %}
 
 {% block content %}
 
 <form action="" method = "POST">
 
 
-{% crsf_token %}
-<table>
+    {% csrf_token %}
+    <table>
 {{ form.as_table }}
 </table>
 <input type = "submit" name = "Submit">
 </form>
+
+<p>
+    Don't see your name on the list?
+    <a href="{% url 'create_user' %}" title = "Create a new user">Create New User</a>
+</p>
+
 
 {% endblock %}

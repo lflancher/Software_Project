@@ -5,9 +5,9 @@
 <p>Are you sure you want to delete "{{item}}"</p>
 
 <form actions="{%url 'delete_recipe' item.id %}" method="POST">
-    {% crsf_token %}
+    {% csrf_token %}
 
-    <a href="{% url 'index' %}">Cancel</a>
+    <a href="{% url 'base_template.html' %}">Cancel</a>
 </form>
 
 {% endblock %}

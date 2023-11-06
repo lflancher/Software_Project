@@ -16,6 +16,13 @@
 
 <input type = "text" id = "form1" onkeyup="lookfor()" placeholder = "Got something in mind?", aria-label = "Got something in mind?" >
 
+</br>
+</br>
+
+<a href="{% url 'create_recipe' %}" title = "Create a new recipe">Upload New</a>
+
+</br>
+</br>
 
 
 {% if recipe_list %}
@@ -24,6 +31,15 @@
     {% for recipe in recipe_list %}
     <li>
         <a href = "{{ recipe.get_absolute_url }}" title = "{{recipe.name}}'s recipe">{{ recipe.name }}</a>
+            <span class="pull-right">
+                <a href="{% url 'update_recipe' recipe.id %}" type="button" class="btn btn-small btn-info">Update</a>
+                <form action="{% url 'delete_recipe' recipe.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="recipe_id" value="{{ recipe.id }}"/>
+                        <button type="submit" class="btn btn-danger btn-small">Delete
+                </button>
+        </form>
+     </span>
     </li>
     {% endfor %}
 </ul>
