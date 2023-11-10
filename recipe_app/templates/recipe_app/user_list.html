@@ -11,6 +11,10 @@
 
 <input type = "text" id = "form1" onkeyup="lookfor()" placeholder = "Got someone in mind?", aria-label = "Got someone in mind?" >
 
+</br>
+
+<a href="{% url 'create_user' %}" title = "Create a new user">Upload New</a>
+
 
 {% if user_list %}
 <ul id = "myUL">
