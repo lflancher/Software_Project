@@ -19,6 +19,7 @@ class Migration(migrations.Migration):
                 ('short_desc', models.CharField(max_length=414)),
                 ('instruction', models.CharField(max_length=3000)),
                 ('ingredients', models.CharField(max_length=2000)),
+                
             ],
         ),
         migrations.CreateModel(

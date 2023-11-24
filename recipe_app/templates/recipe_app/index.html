@@ -9,6 +9,10 @@
 <img src="{% static 'images/chef_hat.png' %}">
 <h1 class = "display-2">Welcome to the Recipes Website!</h1>
 
+<form action="{% url 'search_results' %}" method="get">
+    <input name="q" type="text" placeholder="Search...">
+  </form>
+
 
 
 {% endblock %}

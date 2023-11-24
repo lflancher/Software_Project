@@ -1,10 +1,14 @@
 from typing import Any
+from django.db.models.query import QuerySet
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 import django.views.generic as generic
+from django.views.generic import TemplateView, ListView
 from .models import *
 from .forms import *
 from django.http import HttpResponse
+from django.contrib import messages
 
 # Create your views here.
 
@@ -30,9 +34,27 @@ class RecipeDetailView(generic.DetailView):
 
 
 def index(request):
-
    return render( request, 'recipe_app/index.html')
 
+def registerPage(request):
+   form = CreateUserForm()
+
+   if request.method == 'POST':
+      form = CreateUserForm(request.POST)
+      if form.is_valid():
+         user = form.save()
+         username = form.cleaned_data.get('username')
+         group = Group.objects.get(name='user')
+         user.groups.add(group)
+         user = User.objects.create(user=user,)
+         recipe = Recipe.objects.create()
+         user.save()
+
+         messages.success(request, 'Account was created for ' + username)
+         return redirect('login')
+
+      context = {'form':form}
+      return render(request, 'register.html', context)
 
 def createRecipe(request):
    form = RecipeForm()
@@ -90,5 +112,19 @@ def deleteUser(request, pk):
       return redirect('/')
    context = {'item':user} 
    return render(request, 'recipe.app/user_delete.html', context)
+
+class SearchResultsView(ListView):
+   model = Recipe
+   template_name = 'search_results.html'
+
+   def get_queryset(self):
+      query = self.request.GET.get("q")
+      object_list = Recipe.objects.filter(
+         Q(name__icontains=query)
+      )
+      return object_list
+
+
+
 
    

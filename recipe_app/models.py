@@ -23,6 +23,7 @@ class Recipe(models.Model):
     instruction = models.CharField(max_length = 3000, null = True)
     ingredients = models.CharField(max_length = 2000, null = True)
     user = models.ForeignKey(User,  on_delete=models.CASCADE, default = None)
+    image = models.ImageField(null=True, blank=True, upload_to="images/")
 
     def __str__(self):
         return self.name

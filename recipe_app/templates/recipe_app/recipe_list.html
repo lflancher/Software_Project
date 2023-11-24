@@ -14,8 +14,9 @@
 <h4>Or, have a specific dish you're looking for? Try searching for it!</h4>
 
 
-<input type = "text" id = "form1" onkeyup="lookfor()" placeholder = "Got something in mind?", aria-label = "Got something in mind?" >
-
+<input type = "text" id = "form1" placeholder = "Got something in mind?", aria-label = "Got something in mind?" >
+<button id = "searchbutton" title = 'Search' onclick = "lookfor()">Search</button>
+<button id = "clear button" title = "Clear Results" onclick = "document.getElementById('form1').value = ''; clearResults()">Clear Results</button>
 </br>
 </br>
 
@@ -52,6 +53,13 @@
 
 <script>
 
+function clearResults(){
+    var input;
+    input = document.getElementById('form1');
+    input.value = "";
+    document.getElementById("searchbutton").click();
+}
+
 function lookfor(){
     var input, filter, ul, li, a, i, txtValue;
     input = document.getElementById('form1');
@@ -69,6 +77,17 @@ function lookfor(){
         }
     }
 }
+
+
+var input = document.getElementById("form1");
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("searchbutton").click();
+  }
+});
+
+
 </script>
 
 {% endblock %}

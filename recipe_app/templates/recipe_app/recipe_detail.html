@@ -3,6 +3,10 @@
 
 {% block content %}
 
+{% if recipe.image %}
+<img src="{{ recipe.image.url }}">
+{% endif %}
+
 <h2>Recipe for {{ recipe.name }}</h2>
 <h3>User provided description: {{ recipe.short_desc }}</h3>
 
