@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<form action="" method = "POST">
+<form action="" method = "POST" enctype = "multipart/form-data">
 
 
     {% csrf_token %}
@@ -13,10 +13,7 @@
 <input type = "submit" name = "Submit">
 </form>
 
-<p>
-    Don't see your name on the list?
-    <a href="{% url 'create_user' %}" title = "Create a new user">Create New User</a>
-</p>
+
 
 
 {% endblock %}
