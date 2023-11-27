@@ -21,37 +21,37 @@ class Hosttest(LiveServerTestCase):
         
         assert "Hello, world!" in driver.title
 
-# class LoginFormTest(LiveServerTestCase):
+ class LoginFormTest(LiveServerTestCase):
 
-#     def testform(self):
-#         driver = webdriver.Edge(executable_path = r"C:\Users\lflan\Documents\Software_Project\recipe_app\msedgedriver.exe")
-#         driver.get('http://127.0.0.1:8000/accounts/login/?next=/')
+     def testform(self):
+         driver = webdriver.Edge(executable_path = r"C:\Users\lflan\Documents\Software_Project\recipe_app\msedgedriver.exe")
+         driver.get('http://127.0.0.1:8000/accounts/login/?next=/')
 
-#         time.sleep(3)
+         time.sleep(3)
 
-#         user_name = driver.find_element_by_id('id_username')
-#         user_password = driver.find_element_by_id('id_password')
+         user_name = driver.find_element_by_id('id_username')
+         user_password = driver.find_element_by_id('id_password')
 
-#         time.sleep(3)
+         time.sleep(3)
 
-#         submit = driver.find_element_by_name('submit')
+         submit = driver.find_element_by_name('submit')
 
-#         user_name.send_keys('s_username')
-#         user_password.send_keys('s_password')
+         user_name.send_keys('s_username')
+         user_password.send_keys('s_password')
 
-#         submit.send_keys(Keys.RETURN)
+         submit.send_keys(Keys.RETURN)
 
-#         assert 's_username' in driver.page_source
+         assert 's_username' in driver.page_source
 
-#     class ViewRecipesTest(LiveServerTestCase):
-#         driver = webdriver.Edge(executable_path = r"C:\Users\lflan\Documents\Software_Project\recipe_app\msedgedriver.exe")
-#         driver.get('http://127.0.0.1:8000/')
+     class ViewRecipesTest(LiveServerTestCase):
+         driver = webdriver.Edge(executable_path = r"C:\Users\lflan\Documents\Software_Project\recipe_app\msedgedriver.exe")
+         driver.get('http://127.0.0.1:8000/')
 
        
 
-#         recipe_list = driver.find_element("xpath", "//a[@title= 'Browse our List of Recipes']")
+         recipe_list = driver.find_element("xpath", "//a[@title= 'Browse our List of Recipes']")
 
-#         recipe_list.click()
+         recipe_list.click()
 
 
 
